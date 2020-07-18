@@ -11,6 +11,8 @@ USER        container
 ENV         USER=container HOME=/home/container
 
 WORKDIR     /home/container
-
+#testing multiple commands in a file instead, as pterodactyl doesn't like long startup commands
+RUN         echo "sampctl p get {{gituser}}/{{gitrepo}} && cd {{gitrepo}} && sampctl p ensure && sampctl p build && sampctl p run" > sampctl.sh
+RUN         chmod +x sampctl.sh
 COPY        ./entrypoint.sh /entrypoint.sh
 CMD         ["/bin/bash", "/entrypoint.sh"]
