@@ -8,7 +8,7 @@ echo "Initializing project $gitrepo by $gituser"
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
 echo "/home/container$ ${MODIFIED_STARTUP}"
 
-sampctl p get {{gituser}}/{{gitrepo}}
+sampctl p get ${gituser}/${gitrepo}
 sampctl p ensure --update
 sampctl p build
 sampctl p run
