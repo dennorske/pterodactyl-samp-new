@@ -1,5 +1,5 @@
-FROM  ubuntu:latest
-ENV   DEBIAN_FRONTEND=noninteractive
+FROM  ubuntu:18.04
+
 RUN   dpkg --add-architecture i386 && \
       apt update && \
       apt-get install -qq g++-multilib git ca-certificates curl wget nano net-tools nmap sudo
