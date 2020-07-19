@@ -1,0 +1,45 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1"
+    },
+    "exported_at": "2020-07-19T13:04:47+02:00",
+    "name": "SA-MP with sampctl",
+    "author": "den@ducky.rocks",
+    "description": "This egg allows you to run sampctl in containers on pterodactyl game panel (pterodactyl.io). Startup command is not configurable!",
+    "image": "dennorske\/pterodactyl-samp-new:sampctl",
+    "startup": "echo \"Starting the server\"",
+    "config": {
+        "files": "{\r\n    \"pawn.json\": {\r\n        \"parser\": \"json\",\r\n        \"find\": {\r\n            \"runtime.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"Number of vehicle models\",\r\n    \"userInteraction\": [\r\n        \"Invalid MySQL server\",\r\n        \"Command not found\",\r\n        \"failed to interpret directory as Pawn package\"\r\n    ]\r\n}",
+        "logs": "{\r\n    \"custom\": true,\r\n    \"location\": \"samp.log\"\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\ndpkg --add-architecture i386\r\napt-get -qq update\r\napt-get -qq install curl unzip lib32gcc1 ca-certificates sudo wget git nmap net-tools g++-multilib\r\n\r\ncd \/tmp\r\ncurl https:\/\/raw.githubusercontent.com\/Southclaws\/sampctl\/master\/install-deb.sh | sh\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nsampctl p get ${gituser}\/${gitrepo} . --verbose\r\nsampctl p run --forceEnsure --forceBuild\r\n\r\necho $(sampctl -V)\r\n\r\nchown -R root:root \/mnt\r\n\r\nexport HOME=\/mnt\/server",
+            "container": "ubuntu:18.04",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Git username",
+            "description": "Define the git username of the sampctl package owner",
+            "env_variable": "gituser",
+            "default_value": "dennorske",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "required|string|max:30"
+        },
+        {
+            "name": "Repository Name",
+            "description": "Define the repository name here for the sampctl package",
+            "env_variable": "gitrepo",
+            "default_value": "sampctl-package",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "required|string|max:40"
+        }
+    ]
+}
