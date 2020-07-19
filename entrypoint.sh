@@ -9,6 +9,7 @@ MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g'
 echo "/home/container$ ${MODIFIED_STARTUP}"
 
 sampctl p get ${gituser}/${gitrepo}
+[ -d "${gitrepo}" ] && cd ${gitrepo}
 sampctl p ensure --update
 sampctl p build
 sampctl p run
