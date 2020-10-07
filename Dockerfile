@@ -11,6 +11,9 @@ RUN         dpkg --add-architecture i386 \
 
 RUN         apt-get install -qq libssl1.0.0:i386 libssl-dev:i386
 
+RUN         ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /usr/lib/libssl.so.10
+            ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /usr/lib/libcrypto.so.10
+
 
 USER        container
 ENV         USER=container HOME=/home/container
