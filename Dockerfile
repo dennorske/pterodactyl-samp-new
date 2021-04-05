@@ -8,6 +8,9 @@ RUN         dpkg --add-architecture i386 \
             && apt-get install -qq libstdc++6 lib32stdc++6 tar curl iproute2 nano wget openssl:i386 ca-certificates\
             && apt-get install -qq libtbb2:i386 libtbb-dev:i386 libmysqlclient-dev:i386\
             && useradd -d /home/container -m container
+            
+            # add necessary repo
+RUN         apt-get -qq update && apt-get -qq install software-properties-common
 RUN         add-apt-repository ppa:deadsnakes/ppa
 
             # Let's install dependencies for pip, python and wheel on 32-bit
