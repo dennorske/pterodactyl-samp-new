@@ -19,11 +19,11 @@ RUN         apt-get -qq install libc6-dev:i386 gcc:i386 && \
             apt-get -qq install python3.8-dev:i386
 RUN         apt-get -qq install libc6:i386 libncurses5:i386 libstdc++6:i386
 RUN         apt-get -qq install gcc-i686-linux-gnu
-            
-            # Manual dependencies here (commonly used)
-RUN         python3 -m pip install discord.py whirlpool mysql-connector-python datetime --upgrade
 
 USER        container
+            # Manual dependencies here (commonly used)
+RUN         python3 -m pip install discord.py whirlpool mysql-connector-python datetime --upgrade
+RUN         python3 -m pip list
 ENV         USER=container HOME=/home/container
 
 WORKDIR     /home/container
