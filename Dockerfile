@@ -1,4 +1,4 @@
-FROM        ubuntu:20.04
+FROM        ubuntu:21.10
 
 LABEL       author="denNorske" maintainer="den@ducky.rocks"
 
@@ -25,6 +25,7 @@ USER        container
             # Manual dependencies here (commonly used)
 RUN         python3.9 -m pip install discord.py whirlpool mysql-connector-python datetime --user --upgrade
 RUN         python3.9 -m pip list
+
 
 ENV         USER=container HOME=/home/container
 
