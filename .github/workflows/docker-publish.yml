@@ -9,7 +9,7 @@ on:
   push:
     # branches: [ "master" ]
     # Publish semver tags as releases.
-    tags: [ 'python*.*', 'sampctl', 'test-*' ]
+    tags: [ '*' ]
   # pull_request:
     # branches: [ "master" ]
 
