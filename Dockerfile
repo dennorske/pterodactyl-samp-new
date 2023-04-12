@@ -24,6 +24,9 @@ RUN \
     && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade \
+        pip \
+        setuptools \
+        wheel \
         bcrypt \
         black==22.10.0 \
         click==8.1.3 \
