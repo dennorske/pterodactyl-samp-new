@@ -24,6 +24,7 @@ RUN \
     && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade \
+        bcrypt \
         black==22.10.0 \
         click==8.1.3 \
         flake8==6.0.0 \
