@@ -1,0 +1,1 @@
+This version is for PySAMP 2.1 (ubuntu 22.04) and is compatible with open.mp without openssl installed. 
