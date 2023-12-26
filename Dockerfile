@@ -24,10 +24,11 @@ RUN \
     && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade \
-        pip \
+        pip\
+    && pip install --upgrade \
         setuptools \
         wheel \
-        bcrypt \
+        'bcrypt<4.0.0' \
         black==22.10.0 \
         click==8.1.3 \
         flake8==6.0.0 \
@@ -43,10 +44,10 @@ RUN \
         pymysql \
         python-dotenv==0.21.0 \
         requests==2.28.2 \
-        SQLAlchemy==2.0.0b3 \
+        SQLAlchemy\
         tomli==2.0.1 \
         typing_extensions==4.4.0 \
-        Whirlpool==1.0.0 \ 
+        Whirlpool \
     && \
     pip list
 
